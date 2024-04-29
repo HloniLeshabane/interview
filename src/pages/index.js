@@ -5,7 +5,10 @@ import styles from "@/styles/Home.module.css";
 import PersonalDetials from "../components/PersonalDetails";
 import SurveyTable from "../components/SurveyTable";
 import FoodSelector from "@/components/Foodselector";
+import Navbar from "@/components/navbar";
 import { useState, useEffect } from "react";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const convertRatingtoInteger = (rating) => {
   switch (rating) {
@@ -95,14 +98,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar />
+
       <main className={`${styles.main} ${inter.className}`}>
         <PersonalDetials onData={handleChangeToParent} />
         <FoodSelector onData={handleChangeToParent} />
         <SurveyTable onData={handleChangeToParent} />
         {/* <pre>{JSON.stringify(dataFromChild, null, 2)}</pre> */}
-        <button onClick={() => fetchData()}>Submit</button>
-        <pre>{JSON.stringify(loading, null, 2)}</pre>
-        <pre>{JSON.stringify(error, null, 2)}</pre>
+        <button class="btn btn-primary" onClick={() => fetchData()}>
+          Submit
+        </button>
+        {/* <pre>{JSON.stringify(loading, null, 2)}</pre>
+        <pre>{JSON.stringify(error, null, 2)}</pre> */}
       </main>
     </>
   );

@@ -33,42 +33,46 @@ const UserForm = ({ onData }) => {
   return (
     <div>
       <h1>User Details</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form onSubmit={handleSubmit} className="mb-3">
+        <label className="form-label">
           First Name:
           <input
             type="text"
             name="firstName"
+            class="form-control"
             value={formData.firstName}
             onChange={handleChange}
           />
         </label>
         <br />
-        <label>
+        <label className="form-label">
           Email:
           <input
             type="email"
             name="email"
+            class="form-control"
             value={formData.email}
             onChange={handleChange}
           />
         </label>
         <br />
-        <label>
+        <label className="form-label">
           Date of Birth:
           <input
             type="date"
             name="dob"
+            class="form-control"
             value={formData.dob}
             onChange={handleChange}
           />
         </label>
         <br />
-        <label>
+        <label className="form-label">
           Contact Number:
           <input
             type="tel"
             name="contactNumber"
+            class="form-control"
             value={formData.contactNumber}
             onChange={handleChange}
           />

@@ -15,31 +15,22 @@ const pool = new Pool({
   port: 5432, // default PostgreSQL port
 });
 
-export default function handler(req, res) {
-  if (req.method === "POST") {
-    const insertQuery = `INSERT INTO entries (fullname, email, dateofbirth,contactnumber,favoritefood,watchmovies,listenradio,eatout,watchtv) VALUES ($1, $2, $3, $4, $5,$6, $7,$8,$9)`;
-    const values = [
-      req.body.fullname,
-      req.body.email,
-      req.body.dateofbirth,
-      req.body.contactnumber,
-      req.body.favoritefood,
-      req.body.watchmovies,
-      req.body.listenradio,
-      req.body.eatout,
-      req.body.watchtv,
-    ];
-    pool.query(insertQuery, values, (error, result) => {
+export default async function handler(req, res) {
+  let db_result;
+  if (req.method === "GET") {
+    const youngestQuery = `SELECT (COUNT(*) FILTER (WHERE "favoritefood" LIKE '%pasta%') * 100.0 / COUNT(*)) AS percentage FROM  public.entries;`;
+
+    await pool.query(youngestQuery, (error, result) => {
       if (error) {
         console.error("Error executing query", error);
         return;
       }
-      console.log("Data inserted successfully");
+      console.log("Data queried successfully");
+      console.log();
+      res.status(200).json(result);
     });
-    console.log(req.body);
-    res.status(200).json({ name: "Data inserted" });
   } else {
     // Handle any other HTTP method
   }
-  pool.end();
+  //   pool.end();
 }

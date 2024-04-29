@@ -9,7 +9,7 @@ const FoodSelector = ({ onData }) => {
   };
 
   return (
-    <div>
+    <div class="btn-group">
       <label>
         <input
           type="checkbox"
