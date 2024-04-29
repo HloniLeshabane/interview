@@ -23,7 +23,7 @@ const RatingTable = ({ onData }) => {
     <div className=" mt-20 ">
       <h4 className="text-light">
         Please rate your level of agreement on a scale of 1 to 5, with 1 being
-        "strongly agree and 5 strongly disagree"
+        strongly agree and 5 strongly disagree
       </h4>
       <table className="table table-striped">
         <thead>
