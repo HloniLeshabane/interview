@@ -41,5 +41,5 @@ export default function handler(req, res) {
   } else {
     // Handle any other HTTP method
   }
-  pool.end();
+  //pool.end();
 }
